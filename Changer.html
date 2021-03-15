@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Changer</title>
+	</head>
+	<body>
+		position:fixed <input id='fixed' type='checkbox' />
+		right <input id='right' type='checkbox' />
+		left <input id='left' type='checkbox' />
+		top <input id='top' type='checkbox' />
+		bottom <input id='bottom' type='checkbox' />
+		min width <input id='min' value=75 type='number' />
+		max width <input id='max' value=300 type='number' />
+		<input value='make' id='make' type='submit'/>
+		
+		<div class='maker'>
+			<div id='widget'  fix min_width="75" max_width="300"  event="none"></div>
+			<code><script src='https://drive.google.com/file/d/1SxH6yELVMqxOIBs5f5CshPq4SmDgo9Dj'/></code>
+		</div>
+	</body>
+	<style>
+		.maker{margin-top: 100px}
+		span{text-align: center; padding: 100px; margin-top: 10px}
+	</style>
+	<script>
+		var mk = document.getElementById('make');
+		mk.onclick = function make(event){
+			starter = "<div id='widget'  ";
+			
+			if (document.getElementById('fixed').checked) {starter= starter+'fix ';}
+			if (document.getElementById('right').checked) {starter= starter+'right ';}
+			if (document.getElementById('left').checked) {starter= starter+'left ';}
+			if (document.getElementById('top').checked) {starter= starter+'top ';}
+			if (document.getElementById('bottom').checked) {starter= starter+'bottom ';}
+			starter= starter+'min_width="'+document.getElementById("min").value+'" ';
+			starter= starter+'max_width="'+document.getElementById("max").value+'" ';
+			starter=starter+' event="none"></div>';
+			alert('Скопированно в буфер');
+			maker = document.getElementById("maker");
+			navigator.clipboard.writeText(starter).then(() => {}).catch(err => {console.log('Something went wrong', err);
+			  });
+			
+		}
+	</script>
+</html>
